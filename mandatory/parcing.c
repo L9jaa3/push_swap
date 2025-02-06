@@ -1,4 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parcing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ielouarr <ielouarr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/05 17:36:31 by ielouarr          #+#    #+#             */
+/*   Updated: 2025/02/06 16:04:43 by ielouarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../push_swap.h"
 
 static	void	validate_result(long res, int sign, char c)
 {
@@ -16,7 +28,7 @@ int	ft_atoi(const char *str)
 	long	res;
 
 	i = 0;
-	sign = 1; 
+	sign = 1;
 	res = 0;
 	while (str[i] == ' ')
 		i++;
@@ -73,3 +85,14 @@ void	ft_parcing(t_list **nbr, char **av)
 	}
 }
 
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}

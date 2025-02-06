@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ielouarr <ielouarr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/05 17:35:16 by ielouarr          #+#    #+#             */
+/*   Updated: 2025/02/06 16:06:04 by ielouarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -48,4 +60,5 @@ int		max_position(t_list *lst);
 int		max_position(t_list *lst);
 void	mark_position(t_list **stack);
 void	ft_sort_b(t_list **a, t_list **b, int i);
+void	ft_sort_five_or_less(t_list **a, t_list **b);
 #endif
