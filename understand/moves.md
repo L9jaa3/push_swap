@@ -1,4 +1,4 @@
-# The Funny Guide to Stack B Operations
+# The Funny Guide to Stack B Operations !! The same thing with Stack A
 
 ## The `sb` Function: The Stack B Switcheroo
 
