@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 
 typedef struct s_list
 {
@@ -26,15 +25,11 @@ typedef struct s_list
 }	t_list;
 
 char	**ft_split(char const *s, char c);
-int		ft_atoi(const char *str);
-char	*ft_substr(const char *s, unsigned int start, size_t len);
-char	*ft_strdup(const char *src);
 size_t	ft_strlen(const char *str);
 int		ft_error_message(char *message);
 
 t_list	*ft_lstnew(int data);
 void	ft_lstadd_back(t_list **lst, t_list *nw);
-t_list	*ft_lstlast(t_list *lst);
 void	ft_duplicate(t_list *lst);
 void	ft_lstclear(t_list **lst);
 int		ft_lstsize(t_list *lst);
@@ -57,8 +52,8 @@ void	ft_sort(t_list **a, t_list **b, int i, int j);
 int		is_sort(t_list **lst);
 void	ft_indexing(t_list *lst);
 int		max_position(t_list *lst);
-int		max_position(t_list *lst);
 void	mark_position(t_list **stack);
 void	ft_sort_b(t_list **a, t_list **b, int i);
 void	ft_sort_five_or_less(t_list **a, t_list **b);
+int		check_digit(char *s);
 #endif

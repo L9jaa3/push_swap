@@ -12,6 +12,20 @@
 
 #include "../push_swap.h"
 
+int	check_digit(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] >= '0' && s[i] <= '9')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void	ft_indexing(t_list *lst)
 {
 	t_list	*tmp;

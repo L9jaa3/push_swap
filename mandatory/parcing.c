@@ -21,7 +21,7 @@ static	void	validate_result(long res, int sign, char c)
 	}
 }
 
-int	ft_atoi(const char *str)
+static int	ft_atoi(const char *str)
 {
 	int		i;
 	int		sign;
@@ -70,6 +70,8 @@ void	ft_parcing(t_list **nbr, char **av)
 	while (av[i])
 	{
 		j = 0;
+		if (ft_strlen(av[i]) == 0 || check_digit(av[i]) == 0)
+			ft_error_message("Error");
 		str = ft_split(av[i], ' ');
 		if (!str)
 			(ft_free_leak(str), exit(1));
