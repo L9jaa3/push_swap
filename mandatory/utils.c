@@ -12,11 +12,12 @@
 
 #include "../push_swap.h"
 
-int	ft_error_message(char *message)
+int	ft_error_message(char *message, t_list **nbr)
 {
 	int	i;
 
 	i = 0;
+	ft_lstclear(nbr);
 	while (message[i])
 	{
 		write (2, &message[i], 1);
@@ -27,7 +28,7 @@ int	ft_error_message(char *message)
 	return (-1);
 }
 
-void	ft_duplicate(t_list *lst)
+void	ft_duplicate(t_list *lst, char **str)
 {
 	t_list	*tmp;
 	t_list	*tmp1;
@@ -40,7 +41,10 @@ void	ft_duplicate(t_list *lst)
 		while (tmp)
 		{
 			if (tmp1->data == tmp->data)
-				ft_error_message("Error");
+			{
+				ft_free_leak(str);
+				ft_error_message("Error", &lst);
+			}
 			tmp = tmp-> next;
 		}
 		tmp1 = tmp1->next;

@@ -28,7 +28,7 @@ static size_t	count_words(const char *str, char delimiter)
 	return (count);
 }
 
-static char	*allocate_words(const char *str, char delimiter, size_t *i)
+static char	*allocate_word(const char *str, char delimiter, size_t *i)
 {
 	size_t	start;
 	size_t	len;
@@ -55,7 +55,7 @@ static char	*allocate_words(const char *str, char delimiter, size_t *i)
 	return (word);
 }
 
-static char	**free_memory(char **result, size_t j)
+static char	**free_split_result(char **result, size_t j)
 {
 	while (j > 0)
 		free(result[--j]);
@@ -80,9 +80,9 @@ char	**ft_split(const char *str, char delimiter)
 	{
 		if (str[i] != delimiter && (i == 0 || str[i - 1] == delimiter))
 		{
-			result[j] = allocate_words(str, delimiter, &i);
+			result[j] = allocate_word(str, delimiter, &i);
 			if (!result[j])
-				return (free_memory(result, j));
+				return (free_split_result(result, j));
 			j++;
 		}
 		else

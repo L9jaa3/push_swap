@@ -3,6 +3,8 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 NAME = push_swap
+NAME_B = checker
+
 
 SRCS = ./mandatory/ft_split.c \
        ./mandatory/linked_list_fts.c \

@@ -12,30 +12,30 @@
 
 #include "../push_swap.h"
 
-void	ft_free_list(t_list **nbr)
+void	ft_free_leak(char **str)
 {
-	t_list	*tmp;
-
-	while (*nbr)
-	{
-		tmp = (*nbr)->next;
-		free(*nbr);
-		*nbr = tmp;
-	}
+		int	i;
+	
+		i = 0;
+		while (str && str[i])
+		{
+			free(str[i]);
+			i++;
+		}
+		free(str);
 }
 
-static void	validate_result(long res, int sign, char c, t_list **nbr)
+static	void	validate_result(char **str, long res, int sign, char c, t_list *nbr)
 {
 	if ((res * sign > 2147483647) || (res * sign < -2147483648)
 		|| (c < '0' || c > '9'))
 	{
-		ft_free_list(nbr);
-		ft_error_message("Error");
+		ft_free_leak(str);
+		ft_error_message("Error", &nbr);
 	}
 }
 
-
-static int	ft_atoi(const char *str, t_list **nbr)
+static int	ft_atoi(char **s, const char *str, t_list *lst)
 {
 	int		i;
 	int		sign;
@@ -50,75 +50,40 @@ static int	ft_atoi(const char *str, t_list **nbr)
 		if (str[i++] == '-')
 			sign *= -1;
 	if (str[i] == '\0')
-	{
-		ft_free_list(nbr);
-		ft_error_message("Error");
-	}
+		ft_error_message("Error", &lst);
 	while (str[i])
 	{
-		res = res * 10 + (str[i] - '0');
-		validate_result(res, sign, str[i], nbr);
+		res = res * 10 + (str[i] - 48);
+		validate_result(s, res, sign, str[i], lst);
 		i++;
 	}
-	if (str[i])
-	{
-		ft_free_list(nbr);
-		ft_error_message("Error");
-	}
+	(str[i]) && (ft_error_message("Error", &lst));
 	return (res * sign);
 }
 
-
-static	void	ft_free_leak(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str && str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-}
 
 void	ft_parcing(t_list **nbr, char **av)
 {
 	int		i;
 	int		j;
 	char	**str;
-	t_list	*new_node;
 
 	i = 1;
 	while (av[i])
 	{
 		j = 0;
 		if (ft_strlen(av[i]) == 0 || check_digit(av[i]) == 0)
-		{
-			ft_free_list(nbr);
-			ft_error_message("Error");
-		}
+			ft_error_message("Error", nbr);
 		str = ft_split(av[i], ' ');
 		if (!str)
-		{
-			ft_free_list(nbr);
 			exit(1);
-		}
 		while (str[j])
 		{
-			new_node = ft_lstnew(ft_atoi(str[j], nbr));
-			if (!new_node)
-			{
-				ft_free_leak(str);
-				ft_free_list(nbr);
-				ft_error_message("Error");
-			}
-			ft_lstadd_back(nbr, new_node);
-			ft_duplicate(*nbr);
-			free(str[j]);
+			ft_lstadd_back(nbr, ft_lstnew(ft_atoi(str, str[j], *nbr)));
+			ft_duplicate(*nbr, str);
 			j++;
 		}
-		free(str);
+		ft_free_leak(str);
 		i++;
 	}
 }
