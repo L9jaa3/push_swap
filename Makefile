@@ -14,7 +14,8 @@ SRCS = ./mandatory/ft_split.c \
        ./mandatory/actions_of_a.c \
        ./mandatory/actions_of_b.c \
        ./mandatory/sort_under_5num.c \
-       ./mandatory/push_swap.c
+       ./mandatory/push_swap.c \
+       ./mandatory/ft_atoi.c
 
 OBJS = $(SRCS:.c=.o)
 

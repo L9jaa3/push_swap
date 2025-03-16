@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-#pragma GCC diagnostic ignored "-Wunused-value"
 
 typedef struct s_list
 {
@@ -27,8 +26,7 @@ typedef struct s_list
 
 char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *str);
-int	ft_error_message(char *message, t_list **nbr);
-
+int		ft_error_message(char *message, t_list **nbr);
 t_list	*ft_lstnew(int data);
 void	ft_lstadd_back(t_list **lst, t_list *nw);
 void	ft_duplicate(t_list *lst, char **str);
@@ -58,4 +56,6 @@ void	mark_position(t_list **stack);
 void	ft_sort_b(t_list **a, t_list **b, int i);
 void	ft_sort_five_or_less(t_list **a, t_list **b);
 int		check_digit(char *s);
+int		ft_atoi(char **s, const char *str, t_list *lst);
+
 #endif
